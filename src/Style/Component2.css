@@ -1,0 +1,50 @@
+
+.Component2{
+    height: 100%;
+    width: 70%;
+    background-color:#FFFF;
+    border-start-start-radius: 50px;
+    border-bottom-left-radius: 50px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 60px;
+}
+
+.formcontainer{
+    min-width: 70%;
+    /* background-color: bisque; */
+    /* padding: 15px; */
+}
+
+.form1{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.comptLine{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: black;
+}
+
+.Button{
+    width: 100%;
+    /* background-color: black; */
+}
+
+.Buttonsignup{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.line{
+    height: 1px;
+    width: 42%;
+    background-color: black;
+}

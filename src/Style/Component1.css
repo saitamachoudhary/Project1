@@ -1,0 +1,53 @@
+* {
+    color: white;
+    font-family: sans-serif;
+}
+
+.Component1 {
+    height: 100%;
+    width: 30%;
+    padding-top: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    position: relative;
+    z-index: 2;
+}
+
+.circle1{
+    height: 150px;
+    width: 150px;
+    background-color: rgb(46, 113, 146);
+    border-radius: 50%;
+    filter: blur(20px);
+    position: absolute;
+    left: -7%;
+    top: 9%;
+    z-index: -1;
+}
+
+.circle2{
+    height: 150px;
+    width: 150px;
+    background-color: rgb(46, 113, 146);
+    border-radius: 50%;
+    filter: blur(20px);
+    position: absolute;
+    left: 58%;
+    top: 60%;
+    z-index: -1;
+}
+
+.Component1 h1 {
+    font-weight: 300;
+    font-size: 40px;
+    margin-top: 36px;
+    word-spacing: 2px;
+}
+
+
+.Component1>img {
+   width: 320px;
+   position: absolute;
+    left: 40%;
+    top: 35%;
+}
