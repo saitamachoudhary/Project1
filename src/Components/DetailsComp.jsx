@@ -1,18 +1,24 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { Avatar, List } from 'antd';
+import { Avatar, List ,Button} from 'antd';
 
 const Details=()=>{
-    const arr=[];
+    const[value,setvalue]=React.useState([]);
     const location=useLocation();
-    const data=JSON.parse(location.state);
-    // console.log(data);
-    arr.push(data)
+    localStorage.setItem("formData",location.state);
+    const data=JSON.parse(localStorage.getItem("formData"));
+    React.useEffect(()=>{
+     setvalue(prev=>[...value,data])
+    },[]);
+    const clearData=()=>{
+      localStorage.clear();
+      setvalue();
+    }
     return (
         <div>
          <List 
          itemLayout="horizontal"
-         dataSource={arr}
+         dataSource={value}
          renderItem={(item,index)=>(
             <List.Item>
                 <List.Item.Meta 
@@ -22,6 +28,7 @@ const Details=()=>{
                 />
             </List.Item>
          )}/>
+         <Button onClick={clearData} type="primary">Clear</Button>
         </div>
     )
 }
