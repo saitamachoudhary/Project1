@@ -3,36 +3,38 @@ import '../Style/Component2.css';
 import { GoogleOutlined, FacebookOutlined } from '@ant-design/icons';
 import { Form, Input, Button, ConfigProvider } from 'antd';
 import { useFormik } from 'formik';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
+const validate = (values) => {
+   const errors = {};
+   if (!values.FirstName) {
+      errors.FirstName = 'Required';
+   } else if (values.FirstName.length > 15) {
+      errors.FirstName = 'Must be 15 characters or less';
+   }
+
+   if (!values.LastName) {
+      errors.LastName = 'Required';
+   } else if (values.LastName.length > 20) {
+      errors.LastName = 'Must be 20 characters or less';
+   }
+
+   if (!values.Email) {
+      errors.Email = 'Required';
+   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.Email)) {
+      errors.Email = 'Invalid email address';
+   }
+   if (!values.Password) {
+      errors.Password = 'Required';
+   } 
+   // else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.Password)) {
+   //    errors.Password = 'Invalid password'
+   // }
+   return errors;
+}
 
 const Component2 = () => {
-   const navigate=useNavigate();
-   const validate = (values) => {
-      const errors = {};
-      if (!values.FirstName) {
-         errors.FirstName = 'Required';
-      } else if (values.FirstName.length > 15) {
-         errors.FirstName = 'Must be 15 characters or less';
-      }
-
-      if (!values.LastName) {
-         errors.LastName = 'Required';
-      } else if (values.LastName.length > 20) {
-         errors.LastName = 'Must be 20 characters or less';
-      }
-
-      if (!values.Email) {
-         errors.Email = 'Required';
-      } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.Email)) {
-         errors.Email = 'Invalid email address';
-      }
-      if(!values.Password){
-         errors.Password='Required';
-      } else if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.Password)){
-         errors.Password='Invalid password'
-      }
-      return errors;
-   }
+   const navigate = useNavigate();
    const formIK = useFormik({
       initialValues: {
          FirstName: '',
@@ -40,12 +42,9 @@ const Component2 = () => {
          Email: '',
          Password: '',
       },
-      // validate,
+      validate,
       onSubmit: values => {
-         // alert(JSON.stringify(values,null,2));
-         // console.log(JSON.stringify(values, null, 2));
-         // console.log(values);
-         navigate('/details',{state:JSON.stringify(values, null, 2)});
+         navigate('/details', { state: JSON.stringify(values, null, 2) });
       },
    });
    return (
@@ -61,7 +60,7 @@ const Component2 = () => {
                         type="text"
                         onChange={formIK.handleChange}
                         value={formIK.values.FirstName} />
-                        <p style={{color:'red'}}>{formIK.errors.FirstName?"abc":null}</p>
+                     {formIK.errors.FirstName?<p style={{color:'red'}}>{formIK.errors.FirstName}</p>:null}
                   </Form.Item>
                   <Form.Item>
                      <Input style={{ width: '280px' }} placeholder="LastName"
@@ -70,6 +69,7 @@ const Component2 = () => {
                         type="text"
                         onChange={formIK.handleChange}
                         value={formIK.values.LastName} />
+                        {formIK.errors.LastName?<p style={{color:'red'}}>{formIK.errors.LastName}</p>:null}
                   </Form.Item>
                </div>
                <Form.Item>
@@ -79,16 +79,18 @@ const Component2 = () => {
                      type="email"
                      onChange={formIK.handleChange}
                      value={formIK.values.Email} />
+                     {formIK.errors.Email?<p style={{color:'red'}}>{formIK.errors.Email}</p>:null}
                </Form.Item>
                <Form.Item>
-                  <Input placeholder="Password"
+                  <Input.Password placeholder="Password"
                      id="Password"
                      name="Password"
                      type="password"
                      onChange={formIK.handleChange}
                      value={formIK.values.Password} />
+                     {formIK.errors.Password?<p style={{color:'red'}}>{formIK.errors.Password}</p>:null}
                </Form.Item>
-               <Button className="Button" type="primary" htmlType="submit">Create Account</Button>
+               <Button style={{width:'100%'}} type="primary" htmlType="submit">Create Account</Button>
             </Form>
             <p style={{ color: 'black', fontSize: '12px', marginTop: '5px', marginBottom: '20px' }}>Have you already have an account?{" "}<a style={{ color: 'blue', textDecoration: 'none' }} href="">Login</a></p>
             <div className="comptLine">
