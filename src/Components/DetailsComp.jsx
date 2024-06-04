@@ -28,7 +28,7 @@ const Details=()=>{
                 />
             </List.Item>
          )}/>
-         <Button onClick={clearData} type="primary">Clear</Button>
+         <Button onClick={clearData} style={{ backgroundColor: 'red', borderColor: 'red', color: 'white' }}>Clear</Button>
         </div>
     )
 }

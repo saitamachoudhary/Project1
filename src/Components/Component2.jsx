@@ -90,7 +90,7 @@ const Component2 = () => {
                      value={formIK.values.Password} />
                      {formIK.errors.Password?<p style={{color:'red'}}>{formIK.errors.Password}</p>:null}
                </Form.Item>
-               <Button style={{width:'100%'}} type="primary" htmlType="submit">Create Account</Button>
+               <Button style={{width:'100%', backgroundColor: 'black', borderColor: 'black', color: 'white' }} type="primary" htmlType="submit">Create Account</Button>
             </Form>
             <p style={{ color: 'black', fontSize: '12px', marginTop: '5px', marginBottom: '20px' }}>Have you already have an account?{" "}<a style={{ color: 'blue', textDecoration: 'none' }} href="">Login</a></p>
             <div className="comptLine">
